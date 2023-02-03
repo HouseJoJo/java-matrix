@@ -32,11 +32,23 @@ public class Matrix{
     }
     public static void matrixPrint(double[][] tableIn){
         for(int i = 0; i < tableIn.length; i++){
-            System.out.print("| ");
+            System.out.print("|");
+            System.out.print("\t");
             for(int j = 0; j < tableIn[i].length; j++){
-                System.out.print(tableIn[i][j] + " ");
+                System.out.print(tableIn[i][j]);
+                System.out.print("\t");
             }
-            System.out.print("| \n");
+            System.out.print("|");
+            System.out.print("\t\n");
         }
+    }
+
+    public static void main(String[] args){
+        double[][] out = {
+            {3, 2, 4},
+            {4, 6, 8},
+            {10, 4, 25}
+        };
+        matrixPrint(out);
     }
 }
