@@ -28,16 +28,35 @@ public class Matrix{
                 System.out.println("not a proper value. try again");
             }
         } //End of both try/while blocks for taking in input for matrix size
-        table = new double[row-1][column-1];
-        for(int i = 0; i > row; i++){ //Loop to fill in matrix values.
-            for(int j = 0; j > column; j++){
-                System.out.println("Type a value for for element "+i+", "+ j);
-                table[i][j] = n.nextDouble();
-                matrixPrint(this.table);
-            }
+        table = new double[row][column];
+        for(int i = 0; i < row; i++){ //Loop to fill in matrix values.
+                for(int j = 0; j < column; j++){
+                    try{
+                    System.out.println("Type a value for for element "+i+", "+ j);
+                    table[i][j] = n.nextDouble();
+                    matrixPrint(this.table);
+                    }
+                    catch(InputMismatchException e){
+                        System.out.println("Invalid input. Try again.");
+                        n.reset();
+                        j--;
+                    }
+                }
         }
         n.close();
     }
+
+    public Matrix(double[][] table){
+        this.table = table;
+        row = table.length;
+        for(int i = 0; i < row; i++){
+            if(table[i].length != table[0].length){
+                throw new IllegalArgumentException("2-d Array is not rectangle size");
+            }
+        }
+        column = table[0].length;
+    }
+
     public static void matrixPrint(double[][] tableIn){
         for(int i = 0; i < tableIn.length; i++){
             System.out.print("|");
@@ -57,6 +76,7 @@ public class Matrix{
             {4, 6, 8},
             {10, 4, 25}
         };
-        matrixPrint(out);
+        //matrixPrint(out);
+        Matrix test = new Matrix();
     }
 }
